@@ -1,0 +1,21 @@
+package br.org.lsitec.android.quizz.ui.fragments
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import br.org.lsitec.android.quizz.R
+
+
+class EndgameFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_endgame, container, false)
+    }
+
+}

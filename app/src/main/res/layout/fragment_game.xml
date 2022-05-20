@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    tools:context=".ui.fragments.GameFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/game_image"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:contentDescription="@string/speech_ballon_description"
+            app:layout_constraintBottom_toTopOf="@id/game_question"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_question" />
+
+        <TextView
+            android:id="@+id/game_question"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/game_answer_group"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/game_image"
+            tools:text="Which English rock band released the song 'My Generation'?" />
+
+        <RadioGroup
+            android:id="@+id/game_answer_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/game_question"
+            app:layout_constraintBottom_toTopOf="@id/game_submit_button">
+
+            <RadioButton
+                android:id="@+id/game_first_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:checked="true"
+                tools:text="The Who" />
+
+            <RadioButton
+                android:id="@+id/game_second_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                tools:text="Deep Purple" />
+
+            <RadioButton
+                android:id="@+id/game_third_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                tools:text="Travis" />
+
+            <RadioButton
+                android:id="@+id/game_fourth_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Spandau Ballet" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/game_submit_button"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:background="@drawable/button_primary"
+            android:text="@string/submit"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/game_answer_group"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import br.org.lsitec.android.quizz.webclient.QuizWebClient
-import br.org.lsitec.android.quizz.webclient.services.QuizService
 import kotlinx.coroutines.launch
 
 private const val TAG = "MainActivity"
