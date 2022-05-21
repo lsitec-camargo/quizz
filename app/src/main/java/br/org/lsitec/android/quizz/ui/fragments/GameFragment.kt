@@ -1,20 +1,34 @@
 package br.org.lsitec.android.quizz.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.org.lsitec.android.quizz.R
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import br.org.lsitec.android.quizz.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
+
+    private var _binding: FragmentGameBinding? = null
+    private val binding: FragmentGameBinding get() = _binding!!
+
+    private val navController by lazy {
+        findNavController()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game, container, false)
+    ): View {
+
+        _binding = FragmentGameBinding.inflate(inflater, container, false)
+
+        binding.gameSubmitButton.setOnClickListener {
+            navController.navigate(GameFragmentDirections.actionGameFragmentToEndgameFragment())
+        }
+
+        return binding.root
     }
 
 }

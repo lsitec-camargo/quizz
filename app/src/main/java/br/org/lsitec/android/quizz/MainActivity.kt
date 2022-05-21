@@ -1,8 +1,8 @@
 package br.org.lsitec.android.quizz
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import br.org.lsitec.android.quizz.webclient.QuizWebClient
 import kotlinx.coroutines.launch
@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
             val questions = webClient.getRandomQuestions()
             Log.i(TAG, "questions: $questions")
         }
-
 
     }
 }
