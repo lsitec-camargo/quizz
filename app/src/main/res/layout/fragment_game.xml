@@ -50,7 +50,7 @@
                 android:id="@+id/game_first_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:checked="true"
                 tools:text="The Who" />
 
@@ -58,14 +58,14 @@
                 android:id="@+id/game_second_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 tools:text="Deep Purple" />
 
             <RadioButton
                 android:id="@+id/game_third_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 tools:text="Travis" />
 
             <RadioButton
