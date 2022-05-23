@@ -1,9 +1,8 @@
-package br.org.lsitec.android.quizz
+package br.org.lsitec.android.quizz.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-
-private const val TAG = "MainActivity"
+import br.org.lsitec.android.quizz.R
 
 class MainActivity : AppCompatActivity() {
 

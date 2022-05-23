@@ -2,7 +2,6 @@ package br.org.lsitec.android.quizz.ui.fragments
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +16,6 @@ import br.org.lsitec.android.quizz.webclient.QuizWebClient
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-private const val TAG = "GameFragment"
-
 class GameFragment : Fragment() {
 
     private var _binding: FragmentGameBinding? = null
@@ -32,10 +29,12 @@ class GameFragment : Fragment() {
         findNavController()
     }
 
+    private var numberOfQuestions: Int = 0
     private var questions: MutableList<Question>? = null
     private lateinit var currentQuestion: Question
     private lateinit var answers: MutableList<String>
     private var correctAnswerIndex: Int = -1
+    private var score: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,12 +43,9 @@ class GameFragment : Fragment() {
 
         _binding = FragmentGameBinding.inflate(inflater, container, false)
 
-        binding.gameSubmitButton.setOnClickListener {
-            navController.navigate(GameFragmentDirections.actionGameFragmentToEndgameFragment())
-        }
-
         lifecycleScope.launch {
             questions = webClient.getRandomQuestions()?.toMutableList()
+            numberOfQuestions = questions!!.size
             setQuiz()
         }
 
@@ -87,7 +83,8 @@ class GameFragment : Fragment() {
 
                 questions?.let {
                     if (it.isEmpty()) {
-                        navController.navigate(GameFragmentDirections.actionGameFragmentToEndgameFragment())
+                        navController.navigate(GameFragmentDirections
+                            .actionGameFragmentToEndgameFragment(score, numberOfQuestions))
                     } else {
                         reloadQuiz()
                     }
@@ -109,9 +106,7 @@ class GameFragment : Fragment() {
 
     private fun checkUserAnswer(userAnswerIndex: Int) {
         if (userAnswerIndex == correctAnswerIndex) {
-            Log.i(TAG, "correct answer")
-        } else {
-            Log.i(TAG, "incorrect")
+            score++
         }
         val green = ContextCompat.getColor(requireContext(), R.color.colorPrimaryVariant)
         binding.gameAnswerGroup.getChildAt(correctAnswerIndex)

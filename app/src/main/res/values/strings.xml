@@ -5,4 +5,6 @@
     <string name="quiz_icon">Quiz icon</string>
     <string name="speech_ballon_description">Speech balloon with a question mark inside</string>
     <string name="submit">Submit</string>
+    <string name="final_score">Final Score</string>
+    <string name="play_again">Play again</string>
 </resources>
