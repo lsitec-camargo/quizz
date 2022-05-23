@@ -53,6 +53,11 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setQuiz() {
         initializeQuestion()
         with(binding) {
