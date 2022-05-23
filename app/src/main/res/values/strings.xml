@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">quizz</string>
+    <string name="app_name">Quizz</string>
+    <string name="new_game">New Game</string>
+    <string name="continue_game">Continue</string>
+    <string name="quiz_icon">Quiz icon</string>
+    <string name="speech_ballon_description">Speech balloon with a question mark inside</string>
+    <string name="submit">Submit</string>
+    <string name="final_score">Final Score</string>
+    <string name="play_again">Play again</string>
 </resources>
