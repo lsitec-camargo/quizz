@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="br.org.lsitec.android.quizz.ui.fragments.GameFragment"
+        android:name="br.org.lsitec.android.quizz.ui.game.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
@@ -29,7 +29,8 @@
                 app:argType="integer" />
             <argument
                 android:name="numberOfQuestions"
-                app:argType="integer" />
+                app:argType="integer"
+                android:defaultValue="10" />
         </action>
     </fragment>
     <fragment
@@ -40,7 +41,7 @@
         <action
             android:id="@+id/action_endgameFragment_to_gameFragment"
             app:destination="@id/gameFragment"
-            app:popUpTo="@id/gameFragment"
+            app:popUpTo="@id/endgameFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>
