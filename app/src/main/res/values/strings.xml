@@ -7,4 +7,6 @@
     <string name="submit">Submit</string>
     <string name="final_score">Final Score</string>
     <string name="play_again">Play again</string>
+    <string name="score_percentage">%d%%</string>
+    <string name="score_info">You got %d out of %d</string>
 </resources>
