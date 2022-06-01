@@ -1,53 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.HomeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/home_image"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:contentDescription="@string/quiz_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/home_new_game_button"
-        app:srcCompat="@drawable/ic_idea" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".ui.home.HomeFragment">
 
-    <Button
-        android:id="@+id/home_new_game_button"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/button_primary"
-        android:text="@string/new_game"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/home_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        <ImageView
+            android:id="@+id/home_image"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:contentDescription="@string/quiz_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/home_new_game_button"
+            app:srcCompat="@drawable/ic_idea" />
 
-    <android.widget.Button
-        android:id="@+id/home_continue_button"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/continue_game"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:background="@drawable/button_secondary"
-        app:layout_constraintStart_toStartOf="@id/home_new_game_button"
-        app:layout_constraintEnd_toEndOf="@id/home_new_game_button"
-        app:layout_constraintTop_toBottomOf="@id/home_new_game_button" />
+        <Button
+            android:id="@+id/home_new_game_button"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button_primary"
+            android:text="@string/new_game"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
 
