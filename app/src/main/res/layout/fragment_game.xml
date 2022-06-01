@@ -9,101 +9,116 @@
             type="br.org.lsitec.android.quizz.ui.game.GameViewModel" />
     </data>
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        tools:context=".ui.game.GameFragment">
+        android:layout_height="match_parent" >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
+            android:id="@+id/game_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            tools:context=".ui.game.GameFragment">
 
-            <ImageView
-                android:id="@+id/game_image"
-                android:layout_width="0dp"
-                android:layout_height="160dp"
-                android:layout_marginTop="32dp"
-                android:contentDescription="@string/speech_ballon_description"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_question" />
-
-            <TextView
-                android:id="@+id/game_question"
-                android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="@{viewModel.question.question}"
-                app:layout_constraintBottom_toTopOf="@id/game_answer_group"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/game_image"
-                tools:text="Which English rock band released the song 'My Generation'?" />
+                android:padding="16dp">
 
-            <RadioGroup
-                android:id="@+id/game_answer_group"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:animateLayoutChanges="true"
-                android:orientation="vertical"
-                android:checkedButton="@={viewModel.radioChecked}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/game_question"
-                app:layout_constraintBottom_toTopOf="@id/game_submit_button">
+                <ImageView
+                    android:id="@+id/game_image"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="@string/speech_ballon_description"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/question" />
 
-                <RadioButton
-                    android:id="@+id/game_first_answer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/game_question"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="@{viewModel.answers[0]}"
-                    tools:text="The Who" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="@{viewModel.question.question}"
+                    app:layout_constraintBottom_toTopOf="@id/game_answer_group"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/game_image"
+                    tools:text="Which English rock band released the song 'My Generation'?" />
 
-                <RadioButton
-                    android:id="@+id/game_second_answer"
-                    android:layout_width="match_parent"
+                <RadioGroup
+                    android:id="@+id/game_answer_group"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="@{viewModel.answers[1]}"
-                    tools:text="Deep Purple" />
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical"
+                    android:checkedButton="@={viewModel.radioChecked}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/game_question"
+                    app:layout_constraintBottom_toTopOf="@id/game_submit_button">
 
-                <RadioButton
-                    android:id="@+id/game_third_answer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="@{viewModel.answers[2]}"
-                    tools:text="Travis" />
+                    <RadioButton
+                        android:id="@+id/game_first_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{viewModel.answers[0]}"
+                        tools:text="The Who" />
 
-                <RadioButton
-                    android:id="@+id/game_fourth_answer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.answers[3]}"
-                    tools:text="Spandau Ballet" />
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/game_second_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{viewModel.answers[1]}"
+                        tools:text="Deep Purple" />
 
-            <Button
-                android:id="@+id/game_submit_button"
-                android:layout_width="0dp"
-                android:layout_height="58dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/button_primary"
-                android:text="@string/submit"
-                android:textStyle="bold"
-                android:textAllCaps="false"
-                android:textSize="20sp"
-                android:onClick="@{() -> viewModel.onSubmit()}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                    <RadioButton
+                        android:id="@+id/game_third_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{viewModel.answers[2]}"
+                        tools:text="Travis" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <RadioButton
+                        android:id="@+id/game_fourth_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.answers[3]}"
+                        tools:text="Spandau Ballet" />
+                </RadioGroup>
 
-    </ScrollView>
+                <Button
+                    android:id="@+id/game_submit_button"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_primary"
+                    android:text="@string/submit"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:onClick="@{() -> viewModel.onSubmit()}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <include
+            android:id="@+id/game_loading_view"
+            layout="@layout/loading_view"/>
+
+        <include
+            android:id="@+id/game_error_view"
+            layout="@layout/error_view"/>
+
+    </FrameLayout>
+
 </layout>
