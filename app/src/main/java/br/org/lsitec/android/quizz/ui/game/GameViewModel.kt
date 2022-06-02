@@ -1,5 +1,6 @@
 package br.org.lsitec.android.quizz.ui.game
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,12 +8,9 @@ import androidx.lifecycle.viewModelScope
 import br.org.lsitec.android.quizz.R
 import br.org.lsitec.android.quizz.model.Question
 import br.org.lsitec.android.quizz.webclient.QuizWebClient
+import br.org.lsitec.android.quizz.webclient.services.QuizService
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
-/**
- * [ViewModel] that is attached to the [GameFragment]
- */
 
 class GameViewModel : ViewModel() {
 
@@ -36,6 +34,9 @@ class GameViewModel : ViewModel() {
     private val _eventShowCorrectAnswer = MutableLiveData<Boolean>()
     val eventShowCorrectAnswer: LiveData<Boolean> get() = _eventShowCorrectAnswer
 
+    private val _status = MutableLiveData<GameStatus>()
+    val status: LiveData<GameStatus> = _status
+
     init {
         _eventGameFinish.value = false
         _score.value = 0
@@ -44,9 +45,18 @@ class GameViewModel : ViewModel() {
 
     private fun getQuizQuestions() {
         viewModelScope.launch {
-            val getQuiz = QuizWebClient().getRandomQuestions()
-            quiz = getQuiz!!
-            setQuestion()
+            _status.value = GameStatus.LOADING
+            try {
+                val response = QuizWebClient().getRandomQuestions()
+                response.body()?.let {
+                    quiz = it
+                    setQuestion()
+                    _status.value = GameStatus.DONE
+                }
+            } catch (e: Exception) {
+                Log.e("GameViewModel", "error: $e")
+                _status.value = GameStatus.ERROR
+            }
         }
     }
 
@@ -88,4 +98,10 @@ class GameViewModel : ViewModel() {
         _eventGameFinish.value = false
     }
 
+}
+
+enum class GameStatus {
+    LOADING,
+    DONE,
+    ERROR
 }

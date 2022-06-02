@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import br.org.lsitec.android.quizz.R
@@ -45,6 +44,20 @@ class GameFragment : Fragment() {
                 resetCorrectAnswerColor()
         }
 
+        viewModel.status.observe(viewLifecycleOwner) { status ->
+            when(status) {
+                GameStatus.DONE -> {
+                    displayGameView()
+                }
+                GameStatus.LOADING -> {
+                    displayLoadingView()
+                }
+                else -> {
+                    displayErrorView()
+                }
+            }
+        }
+
         return binding.root
     }
 
@@ -69,4 +82,23 @@ class GameFragment : Fragment() {
                 .setBackgroundColor(Color.TRANSPARENT)
         }
     }
+
+    private fun displayErrorView() {
+        binding.gameLoadingView.visibility = View.GONE
+        binding.gameView.visibility = View.GONE
+        binding.gameErrorView.visibility = View.VISIBLE
+    }
+
+    private fun displayLoadingView() {
+        binding.gameLoadingView.visibility = View.VISIBLE
+        binding.gameView.visibility = View.GONE
+        binding.gameErrorView.visibility = View.GONE
+    }
+
+    private fun displayGameView() {
+        binding.gameLoadingView.visibility = View.GONE
+        binding.gameView.visibility = View.VISIBLE
+        binding.gameErrorView.visibility = View.GONE
+    }
+
 }
