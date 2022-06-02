@@ -20,6 +20,27 @@
             app:layout_constraintBottom_toTopOf="@id/home_new_game_button"
             app:srcCompat="@drawable/idea" />
 
+        <TextView
+            android:id="@+id/home_category_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginStart="16dp"
+            android:text="@string/category"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_image"
+            app:layout_constraintBottom_toTopOf="@id/home_new_game_button" />
+
+        <Spinner
+            android:id="@+id/home_category_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            app:layout_constraintStart_toEndOf="@id/home_category_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/home_category_text"
+            app:layout_constraintBottom_toBottomOf="@id/home_category_text" />
+
         <Button
             android:id="@+id/home_new_game_button"
             android:layout_width="0dp"

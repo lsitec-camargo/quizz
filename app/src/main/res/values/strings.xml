@@ -11,4 +11,5 @@
     <string name="score_info">You got %d out of %d</string>
     <string name="error_image">Error image</string>
     <string name="error_message">Sorry, an error occurred</string>
+    <string name="category">Category:</string>
 </resources>

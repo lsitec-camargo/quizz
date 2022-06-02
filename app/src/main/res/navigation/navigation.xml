@@ -25,6 +25,10 @@
             app:popUpTo="@id/gameFragment"
             app:popUpToInclusive="true" >
         </action>
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
     <fragment
         android:id="@+id/endgameFragment"

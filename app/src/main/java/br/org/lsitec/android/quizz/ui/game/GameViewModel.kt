@@ -1,6 +1,5 @@
 package br.org.lsitec.android.quizz.ui.game
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,11 +7,10 @@ import androidx.lifecycle.viewModelScope
 import br.org.lsitec.android.quizz.R
 import br.org.lsitec.android.quizz.model.Question
 import br.org.lsitec.android.quizz.webclient.QuizWebClient
-import br.org.lsitec.android.quizz.webclient.services.QuizService
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GameViewModel : ViewModel() {
+class GameViewModel(private val category: String) : ViewModel() {
 
     private var nQuestion: Int = 0
     private lateinit var quiz: List<Question>
@@ -47,14 +45,13 @@ class GameViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = GameStatus.LOADING
             try {
-                val response = QuizWebClient().getRandomQuestions()
+                val response = QuizWebClient().getQuestions(category)
                 response.body()?.let {
                     quiz = it
                     setQuestion()
                     _status.value = GameStatus.DONE
                 }
             } catch (e: Exception) {
-                Log.e("GameViewModel", "error: $e")
                 _status.value = GameStatus.ERROR
             }
         }

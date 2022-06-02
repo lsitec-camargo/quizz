@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import br.org.lsitec.android.quizz.R
 import br.org.lsitec.android.quizz.databinding.FragmentGameBinding
 
@@ -27,7 +28,11 @@ class GameFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+
+        val fragmentArgs by navArgs<GameFragmentArgs>()
+        val viewModelFactory = GameViewModelFactory(fragmentArgs.category)
+
+        viewModel = ViewModelProvider(this, viewModelFactory).get(GameViewModel::class.java)
         binding.viewModel = viewModel
 
         viewModel.eventGameFinish.observe(viewLifecycleOwner) { isFinished ->
